@@ -1,0 +1,19 @@
+{
+  "name": "cards-service",
+  "version": "1.0.0",
+  "description": "This is cards onboarding service",
+  "main": "cards-service-app.js",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "author": "Rikhi",
+  "license": "ISC",
+  "dependencies": {
+    "better-sqlite3": "^11.7.2",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.12.0",
+    "sqlite3": "^5.1.7"
+  }
+}
