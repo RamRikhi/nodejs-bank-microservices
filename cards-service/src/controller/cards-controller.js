@@ -1,4 +1,4 @@
-const cardsService = require("../services/cards-service");
+const cardsService = require("../service/cards-service");
 
 const { createCard, fetchAllCards } = cardsService;
 
