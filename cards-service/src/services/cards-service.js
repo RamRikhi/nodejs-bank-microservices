@@ -3,16 +3,14 @@ const databaseClient = require('../config/database-config');
 const sqliteClient = databaseClient.sqliteClient;
 
 const createCard = async (cardData) => {
-    console.log('cardData', JSON.stringify(cardData));
     const { id, cardHolderName,  cardType, cardNumber, expiryDate } = cardData;
     try {
         const sql = 'INSERT INTO cards (id, card_holder_name, card_type, card_number, expiry_date) VALUES (?, ?, ?, ?, ?)';
         const params = [id, cardHolderName, cardType, cardNumber, expiryDate];
-        await sqliteClient.run(sql, params, (result, err) => {
+        await sqliteClient.run(sql, params, (err) => {
             if (err) {
                 throw new Error('Failed to create card');
             }
-            console.log('result', result);
             return cardData;
         });
         return cardData;
@@ -21,13 +19,21 @@ const createCard = async (cardData) => {
     }
 };
 
-const getCard = async (cardId) => {
+
+const fetchAllCards = async () => {
     try {
-        const card = await sqliteClient.findById(cardId);
-        return card;
+        const rows = await new Promise((resolve, reject) => {
+            sqliteClient.all('SELECT * FROM cards', (err, rows) => {
+                if (err) {
+                    return reject(new Error('Failed to fetch card'));
+                }
+                resolve(rows);
+            });
+        });
+        return rows;
     } catch (error) {
         throw new Error('Failed to fetch card');
     }
 };
 
-module.exports = { createCard, getCard };
+module.exports = { createCard, fetchAllCards };

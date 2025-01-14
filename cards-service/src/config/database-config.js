@@ -3,7 +3,7 @@ const mysql = require('mysql2/promise');
 const sqlite3 = require('sqlite3');
 
 
-const databasePath = path.resolve(__dirname, '..\\..\\database.sqlite');
+const databasePath = path.resolve(__dirname, '../../database.sqlite');
 
 const mysqlClient = mysql.createPool({
     host: process.env.DB_HOST,
