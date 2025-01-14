@@ -1,6 +1,6 @@
 const express = require('express');
-const cardRoutes = require('./routes/cards-routes');
-const errorHandler = require('./middleware/error-handler');
+const cardRoutes = require('./routes/cards.routes');
+const errorHandler = require('./middleware/error.handler');
 
 const app = express();
 

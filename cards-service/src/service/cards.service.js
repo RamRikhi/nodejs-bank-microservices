@@ -1,4 +1,4 @@
-const databaseClient = require('../config/database-config');
+const databaseClient = require('../config/sqlite.config');
 
 const sqliteClient = databaseClient.sqliteClient;
 
@@ -25,7 +25,7 @@ const fetchAllCards = async () => {
         const rows = await new Promise((resolve, reject) => {
             sqliteClient.all('SELECT * FROM cards', (err, rows) => {
                 if (err) {
-                    return reject(new Error('Failed to fetch card'));
+                    return reject('Failed to fetch card');
                 }
                 resolve(rows);
             });

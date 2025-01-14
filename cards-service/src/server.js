@@ -1,8 +1,8 @@
 require('dotenv').config();
 
 const app = require('./app');
-const sqliteClient = require('./config/database-config');
-const env = require('./config/app-config');
+const sqliteClient = require('./config/sqlite.config');
+const env = require('./config/app.config');
 
 const port = env.port;
 
